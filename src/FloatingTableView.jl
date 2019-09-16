@@ -1,5 +1,5 @@
 module FloatingTableView
 
-greet() = print("Hello World!")
+greet() = print("Hello, Peter!")
 
 end # module

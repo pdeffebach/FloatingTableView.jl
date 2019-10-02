@@ -3,6 +3,10 @@ uuid = "197bc772-8d3f-4a3f-b50f-4eb5086fedbf"
 authors = ["pdeffebach <p.deffebach@gmail.com>"]
 version = "0.1.0"
 
+[deps]
+Blink = "ad839575-38b3-5650-b840-f874b8c74a25"
+TableView = "40c74d1a-b44c-5b06-a7c1-6cbea58ea978"
+
 [compat]
 julia = "1"
 

@@ -1,5 +1,7 @@
 module FloatingTableView
 
-greet() = print("Hello, Peter!")
+using Blink, TableView
+
+greet() = print("Hello!")
 
 end # module

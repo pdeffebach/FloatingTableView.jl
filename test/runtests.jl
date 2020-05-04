@@ -2,5 +2,6 @@ using FloatingTableView
 using Test
 
 @testset "FloatingTableView.jl" begin
-    # Write your own tests here.
+    t = (a = [1], b = [2])
+    browse(t)
 end

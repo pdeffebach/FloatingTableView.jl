@@ -2,6 +2,11 @@ module FloatingTableView
 
 using Blink, TableView
 
-greet() = print("Hello!")
+export browse
+
+function browse(df)
+    w =Blink.Window()
+    body!(w, showtable(df))
+end
 
 end # module

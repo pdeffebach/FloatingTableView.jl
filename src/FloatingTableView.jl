@@ -2,7 +2,7 @@ module FloatingTableView
 
 using Blink, TableView
 
-export browse
+export browse, showtable
 
 mutable struct CurrentWin
     nullablewin::Union{Blink.Window, Nothing}
@@ -24,13 +24,21 @@ end
 
 current(win::Blink.Window) = (CURRENT_WIN.nullablewin = win)
 
-function browse(df)
+"""
+	browse(df; kwargs)
+
+Browse a Tables.jl compatible data source in a new Blink window using 
+Tables.jl's `showtable` function. 
+
+See also: [`showtable`](@ref)
+"""
+function browse(df; kwargs...)
 	if iswinnull() || !active(current())
 		w = Blink.Window()
 		current(w)
-		body!(current(), showtable(df))
+		body!(current(), showtable(df; kwargs...))
 	else
-		body!(current(), showtable(df))
+		body!(current(), showtable(df; kwargs...))
 	end
 
     return nothing

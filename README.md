@@ -2,7 +2,9 @@
 
 View your datasets in a new window. Ideal for terminal-based data cleaning workflows. 
 
-FloatingTableView.jl leverages Julia Computing's [TableView.jl](https://github.com/JuliaComputing/TableView.jl) and [Blink.jl](https://github.com/JuliaGizmos/Blink.jl) to view any [Tables.jl](https://github.com/JuliaData/Tables.jl) compatible data source in an electron-based browser window. 
+FloatingTableView.jl leverages Julia Computing's [TableView.jl](https://github.com/JuliaComputing/TableView.jl) and [Blink.jl](https://github.com/JuliaGizmos/Blink.jl) to view any [Tables.jl](https://github.com/JuliaData/Tables.jl) compatible data source in an Electron-based window. 
+
+The function exports a single, one-argument function 
 
 ```
 julia> using DataFrames, FloatingTableView

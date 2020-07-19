@@ -4,6 +4,8 @@ using Blink, TableView
 
 export browse, showtable
 
+# Method for keeping current window active borrowed 
+# from Plots.jl
 mutable struct CurrentWin
     nullablewin::Union{Blink.Window, Nothing}
 end

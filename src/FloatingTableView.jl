@@ -2,8 +2,10 @@ module FloatingTableView
 
 using Blink, TableView
 
-export browse
+export browse, showtable
 
+# Method for keeping current window active borrowed 
+# from Plots.jl
 mutable struct CurrentWin
     nullablewin::Union{Blink.Window, Nothing}
 end
@@ -24,13 +26,45 @@ end
 
 current(win::Blink.Window) = (CURRENT_WIN.nullablewin = win)
 
-function browse(df)
+"""
+	browse(t; kwargs)
+
+Browse data source in a new Blink window using 
+Tables.jl's `showtable` function. 
+
+# Arguments
+
+- `t`, a Tables.jl-compatible data source, 
+  for example a `DataFrame` or a `NamedTuple` 
+  of `Vector`s
+- `kwargs`, keyword arguments passed to the 
+  `showtable` command from TableView.jl to 
+  control the details of the new data viewer.
+  See [`showtable`](@ref) for details.
+
+# Examples
+
+```julia
+julia> t = (a = rand(10), b = rand(10))
+
+julia> browse(t)
+```
+
+```julia
+julia> t = rand(100, 100)
+
+julia> browse(t, dark = true)
+```
+
+See also: [`showtable`](@ref)
+"""
+function browse(df; kwargs...)
 	if iswinnull() || !active(current())
 		w = Blink.Window()
 		current(w)
-		body!(current(), showtable(df))
+		body!(current(), showtable(df; kwargs...))
 	else
-		body!(current(), showtable(df))
+		body!(current(), showtable(df; kwargs...))
 	end
 
     return nothing

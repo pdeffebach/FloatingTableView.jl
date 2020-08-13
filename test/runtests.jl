@@ -7,6 +7,7 @@ const W = FloatingTableView.TableView.WebIO
 
 @testset "FloatingTableView.jl" begin
     t = (a = [1], b = [2])
+
     @test showtable(t) isa W.Scope
     @test browse(t) === nothing
 

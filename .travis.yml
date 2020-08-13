@@ -9,5 +9,4 @@ os:
   - osx
 
 script:
-  - julia -e 'using Pkg; Pkg.clone(pwd())'
   - julia -e 'using Pkg; Pkg.test("FloatingTableView",coverage=true)'

@@ -1,0 +1,13 @@
+language: julia
+
+julia:
+  - 1.0
+  - 1.5
+
+os:
+  - linux
+  - osx
+
+script:
+  - julia -e 'Pkg.clone(pwd())'
+  - julia -e 'Pkg.test("PkgName",coverage=true)'

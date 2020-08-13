@@ -1,0 +1,11 @@
+language: julia
+
+julia:
+  - 1.0
+  - 1.5
+
+os:
+  - osx
+
+script:
+  - julia -e 'using Pkg; Pkg.test("FloatingTableView",coverage=true)'

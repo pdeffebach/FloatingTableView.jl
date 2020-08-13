@@ -1,13 +1,14 @@
 module FloatingTableView
 
-using Blink, TableView
+using Blink: Window, body!, active
+using TableView
 
 export browse, showtable
 
 # Method for keeping current window active borrowed 
 # from Plots.jl
 mutable struct CurrentWin
-    nullablewin::Union{Blink.Window, Nothing}
+    nullablewin::Union{Window, Nothing}
 end
 const CURRENT_WIN = CurrentWin(nothing)
 
@@ -24,7 +25,7 @@ function current()
     CURRENT_WIN.nullablewin
 end
 
-current(win::Blink.Window) = (CURRENT_WIN.nullablewin = win)
+current(win::Window) = (CURRENT_WIN.nullablewin = win)
 
 """
 	browse(t; kwargs)
@@ -60,7 +61,7 @@ See also: [`showtable`](@ref)
 """
 function browse(df; kwargs...)
 	if iswinnull() || !active(current())
-		w = Blink.Window()
+		w = Window()
 		current(w)
 		body!(current(), showtable(df; kwargs...))
 	else

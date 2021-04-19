@@ -59,13 +59,13 @@ julia> browse(t, dark = true)
 
 See also: [`showtable`](@ref)
 """
-function browse(df; kwargs...)
+function browse(df; height = "100vh", kwargs...)
 	if iswinnull() || !active(current())
 		w = Window()
 		current(w)
-		body!(current(), showtable(df; kwargs...))
+		body!(current(), showtable(df; height = height, kwargs...))
 	else
-		body!(current(), showtable(df; kwargs...))
+		body!(current(), showtable(df; height = height, kwargs...))
 	end
 
     return nothing

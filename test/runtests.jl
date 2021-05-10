@@ -22,6 +22,9 @@ const W = FloatingTableView.TableView.WebIO
 	t = [1 3; 3 4]
 	@test showtable(t) isa W.Scope
     @test browse(t) === nothing
+
+    t = [(a = 1, b = 2), (a = 3, b = 4)]
+    @test browse(t; newwindow=true) === nothing
 end
 
 end

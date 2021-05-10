@@ -38,9 +38,9 @@ Tables.jl's `showtable` function.
 - `t`, a Tables.jl-compatible data source,
   for example a `DataFrame` or a `NamedTuple`
   of `Vector`s
-- `newwindow`, keyword argument to open the data
+- `newwindow`, boolean keyword argument to view the data
   in a new `Blink` window instead of over-writing.
-  This will be slower.
+  Viewing in a new window will be slower than over-writing.
 - `kwargs...`, keyword arguments passed to the
   `showtable` command from TableView.jl to
   control the details of the new data viewer.

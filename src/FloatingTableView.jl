@@ -62,7 +62,7 @@ julia> browse(t, dark = true)
 
 See also: [`showtable`](@ref)
 """
-function browse(df; height = "100vh", newwindow = false, kwargs...)
+function browse(df; height = "100vh", newwindow::Bool = false, kwargs...)
 	if newwindow == true
     body!(Window(), showtable(df; height = height, kwargs...))
   elseif iswinnull() || !active(current())

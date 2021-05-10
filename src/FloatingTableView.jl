@@ -5,7 +5,7 @@ using TableView
 
 export browse, showtable
 
-# Method for keeping current window active borrowed 
+# Method for keeping current window active borrowed
 # from Plots.jl
 mutable struct CurrentWin
     nullablewin::Union{Window, Nothing}
@@ -28,18 +28,21 @@ end
 current(win::Window) = (CURRENT_WIN.nullablewin = win)
 
 """
-	browse(t; kwargs)
+	browse(t; newwindow = false, kwargs...)
 
-Browse data source in a new Blink window using 
-Tables.jl's `showtable` function. 
+Browse data source in a new Blink window using
+Tables.jl's `showtable` function.
 
 # Arguments
 
-- `t`, a Tables.jl-compatible data source, 
-  for example a `DataFrame` or a `NamedTuple` 
+- `t`, a Tables.jl-compatible data source,
+  for example a `DataFrame` or a `NamedTuple`
   of `Vector`s
-- `kwargs`, keyword arguments passed to the 
-  `showtable` command from TableView.jl to 
+- `newwindow`, keyword argument to open the data
+  in a new `Blink` window instead of over-writing.
+  This will be slower.
+- `kwargs...`, keyword arguments passed to the
+  `showtable` command from TableView.jl to
   control the details of the new data viewer.
   See [`showtable`](@ref) for details.
 
@@ -59,8 +62,10 @@ julia> browse(t, dark = true)
 
 See also: [`showtable`](@ref)
 """
-function browse(df; height = "100vh", kwargs...)
-	if iswinnull() || !active(current())
+function browse(df; height = "100vh", newwindow = false, kwargs...)
+	if newwindow == true
+    body!(Window(), showtable(df; height = height, kwargs...))
+  elseif iswinnull() || !active(current())
 		w = Window()
 		current(w)
 		body!(current(), showtable(df; height = height, kwargs...))

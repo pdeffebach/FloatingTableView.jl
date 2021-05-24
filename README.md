@@ -6,7 +6,7 @@ View your datasets in a new window. Ideal for terminal-based data cleaning workf
 
 FloatingTableView.jl leverages Julia Computing's [TableView.jl](https://github.com/JuliaComputing/TableView.jl) and [Blink.jl](https://github.com/JuliaGizmos/Blink.jl) to view any [Tables.jl](https://github.com/JuliaData/Tables.jl) compatible data source in an Electron-based window. 
 
-The function exports a single function, `browse` to view tables.  `browse` accepts all the
+This package exports a single function, `browse`, to view tables.  `browse` accepts all the
 keyword arguments that `TableView.showtable` accepts. For example, tables can be displayed 
 in dark mode and fixed widths and heights. Run `? TableView` for a full list of keyword
 arguments supported. 
